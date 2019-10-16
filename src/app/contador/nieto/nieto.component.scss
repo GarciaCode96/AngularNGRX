@@ -1,5 +1,4 @@
-.contenedor{
-  padding-top: 25px;
+.contenedor-nieto{
   .botonera{
     margin: 20px auto;
     width: 50%;
@@ -10,14 +9,4 @@
       margin: 5px 10px;
     }
   }
-}
-
-.separador{
-  width: 50%;
-  border: solid 1px #000;
-}
-
-.contenedor-hijo{
-  width: 50%;
-  margin: 20px auto;
 }

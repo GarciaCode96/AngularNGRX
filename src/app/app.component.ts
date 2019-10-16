@@ -6,5 +6,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ng-redux';
+
+  private titulo: string;
+  private contador: number;
+
+  constructor(){
+    this.titulo = 'Contador con NGRX';
+    this.contador = 12;
+  }
+
+  public incrementarContador(): void{
+    this.contador = this.contador += 1;
+  }
+
+  public decrementarContador(): void{
+    this.contador = this.contador -= 1;
+  }
+
+  public recibirContadorHijo(contadorHijo: number): void{
+    this.contador = contadorHijo;
+  }
 }
