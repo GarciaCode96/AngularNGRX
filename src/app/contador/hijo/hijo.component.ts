@@ -1,4 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../app.reducers';
+import { MultiplicarAction, DividirAction } from '../contador.actions';
 
 @Component({
   selector: 'app-hijo',
@@ -7,31 +10,24 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class HijoComponent implements OnInit {
 
-  @Input()
-  private contadorHijo: number;
+  contador: number;
 
-  @Output()
-  private respuestaContadorHijo: EventEmitter<number>;
+  constructor(private store: Store<AppState>){}
 
-  constructor() {
-    this.contadorHijo = 0;
-    this.respuestaContadorHijo = new EventEmitter<number>();
+  ngOnInit(){
+    this.store.select('contador')
+    .subscribe((contador: number) => {
+      this.contador = contador;
+    });
   }
 
-  ngOnInit() {}
-
   public multiplicarContador(): void{
-    this.contadorHijo = this.contadorHijo *= 2;
-    this.respuestaContadorHijo.emit(this.contadorHijo);
+    const multiplicarAction = new MultiplicarAction(3);
+    this.store.dispatch(multiplicarAction);
   }
 
   public dividirContador(): void{
-    this.contadorHijo = this.contadorHijo /= 2;
-    this.respuestaContadorHijo.emit(this.contadorHijo);
-  }
-
-  public resetContadorHijo(contadorNieto: number): void{
-    this.contadorHijo = contadorNieto;
-    this.respuestaContadorHijo.emit(this.contadorHijo);
+    const dividirAction = new DividirAction(3);
+    this.store.dispatch(dividirAction);
   }
 }

@@ -1,12 +1,17 @@
-import { Action } from '@ngrx/store';
-import { INCREMENTAR, DECREMENTAR } from './contador.actions';
+import * as fromContador from './contador.actions';
 
-export function contadorReducer(state: number = 0, action: Action): number{
+export function contadorReducer(state: number = 0, action: fromContador.actions): number{
   switch(action.type){
-    case INCREMENTAR:
+    case fromContador.INCREMENTAR:
       return state + 1;
-    case DECREMENTAR:
+    case fromContador.DECREMENTAR:
       return state - 1;
+    case fromContador.MULTIPLICAR:
+      return state * action.payload;
+    case fromContador.DIVIDIR:
+      return state / action.payload;
+    case fromContador.RESETEAR:
+      return state = 0;
     default:
       return state;
   }

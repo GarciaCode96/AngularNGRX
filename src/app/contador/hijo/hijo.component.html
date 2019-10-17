@@ -1,6 +1,6 @@
 <div class="hijo-contenedor">
   <h2 class="text-center">Contador Hijo</h2>
-  <h3 class="text-center">{{ contadorHijo }}</h3>
+  <h3 class="text-center">{{ contador }}</h3>
   <div class="botonera">
     <button class="btn btn-info" (click)="multiplicarContador()">Multiplicador</button>
     <button class="btn btn-danger" (click)="dividirContador()">Dividisor</button>
@@ -8,5 +8,5 @@
 </div>
 <hr class="separador"/>
 <div class="contenedor-nieto">
-  <app-nieto [contadorNieto]="contadorHijo" (resetContadorNieto)="resetContadorHijo($event)"></app-nieto>
+  <app-nieto></app-nieto>
 </div>
